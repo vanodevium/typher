@@ -11,7 +11,7 @@
     "make": "electron-forge make",
     "lint": "xo src",
     "fix": "xo --fix src",
-    "build": "electron-packager . --platform linux --arch x64 --out .dist/ --overwrite true --ignore='(yarn.*|\\/\\..*|\\.md$)' --icon=Typher",
+    "build": "electron-packager . --platform linux --arch x64 --out .dist/ --overwrite true --ignore='(\\/\\..*|\\.md$)' --icon=Typher",
     "deb64": "electron-installer-debian --src .dist/Typher-linux-x64/ --arch amd64 --config .debian.config.json"
   },
   "keywords": [
@@ -31,16 +31,22 @@
     "typograf": "^6.12.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.58",
-    "electron": "13.1.7",
+    "@electron-forge/cli": "6.0.0-beta.61",
+    "electron": "14.0.1",
     "electron-installer-debian": "^3.1.0",
-    "electron-packager": "^15.1.0",
-    "xo": "^0.34.1"
+    "electron-packager": "^15.4.0",
+    "xo": "^0.44.0"
   },
   "xo": {
     "space": true,
+    "rules": {
+      "quotes": ["error", "double"],
+      "unicorn/prefer-module": 0,
+      "node/prefer-global/process": ["error", "always"]
+    },
     "global": [
-      "document"
+      "document",
+      "process"
     ]
   }
 }

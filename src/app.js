@@ -1,7 +1,7 @@
-const {clipboard} = require('electron');
+const {clipboard} = require("electron");
 
-const Typo = require('typograf');
-const Eyo = require('eyo-kernel');
+const Typo = require("typograf");
+const Eyo = require("eyo-kernel");
 
 /**
  * @property {{}} dictionary
@@ -9,16 +9,16 @@ const Eyo = require('eyo-kernel');
 const safeEyo = new Eyo();
 safeEyo.dictionary.loadSafeSync();
 
-const typo = new Typo({locale: ['ru', 'en-US'], live: true});
-const $editor = document.querySelector('#editor');
-const $result = document.querySelector('#result');
+const typo = new Typo({locale: ["ru", "en-US"], live: true});
+const $editor = document.querySelector("#editor");
+const $result = document.querySelector("#result");
 
 $editor.focus();
 
 let lastValue = $editor.value;
 
 $editor.addEventListener(
-  'input',
+  "input",
   () => {
     const value = $editor.value;
     if (value !== lastValue) {
@@ -30,7 +30,7 @@ $editor.addEventListener(
     $result.value = typo.execute(safeEyo.restore(lastValue));
     clipboard.writeText($result.value);
   },
-  false
+  false,
 );
 
 function getCaretPosition(element) {
@@ -38,5 +38,5 @@ function getCaretPosition(element) {
 }
 
 function setCaretPosition(element, pos) {
-  return typeof element.setSelectionRange === 'function' && element.setSelectionRange(pos, pos);
+  return typeof element.setSelectionRange === "function" && element.setSelectionRange(pos, pos);
 }

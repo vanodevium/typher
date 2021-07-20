@@ -1,9 +1,10 @@
-const path = require('path');
-const {app, BrowserWindow, Menu} = require('electron');
-const isMac = () => process.platform === 'darwin';
+const path = require("path");
+const {app, BrowserWindow, Menu} = require("electron");
+
+const isMac = () => process.platform === "darwin";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
+if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
@@ -12,29 +13,30 @@ let splashWindow;
 
 const createMainWindow = () => {
   mainWindow = new BrowserWindow({
-    icon: './resources/icon.png',
+    icon: path.resolve(__dirname, "../resources/icon.png"),
     width: 800,
     height: 600,
     webPreferences: {
+      nativeWindowOpen: false,
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
     },
-    show: false
+    show: false,
   });
 
   const menu = Menu.buildFromTemplate([
     {
-      label: '&Menu',
+      label: "&Menu",
       submenu: [
         {
-          label: 'Exit',
+          label: "Exit",
           click() {
             app.quit();
           },
-          accelerator: 'CmdOrCtrl+Q'
-        }
-      ]
-    }
+          accelerator: "CmdOrCtrl+Q",
+        },
+      ],
+    },
   ]);
   Menu.setApplicationMenu(menu);
 
@@ -42,14 +44,14 @@ const createMainWindow = () => {
   // mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', () => {
+  mainWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
   });
 
-  mainWindow.once('show', () => {
+  mainWindow.once("show", () => {
     if (!splashWindow) {
       return;
     }
@@ -57,7 +59,7 @@ const createMainWindow = () => {
     splashWindow.destroy();
   });
 
-  mainWindow.once('ready-to-show', () => {
+  mainWindow.once("ready-to-show", () => {
     if (!mainWindow) {
       return;
     }
@@ -65,7 +67,7 @@ const createMainWindow = () => {
     mainWindow.show();
   });
 
-  return mainWindow.loadURL(`file://${path.resolve(__dirname, 'index.html')}`);
+  return mainWindow.loadURL(`file://${path.resolve(__dirname, "index.html")}`);
 };
 
 const createSplashWindow = () => {
@@ -75,14 +77,17 @@ const createSplashWindow = () => {
     transparent: true,
     frame: false,
     alwaysOnTop: true,
-    show: false
+    show: false,
+    webPreferences: {
+      nativeWindowOpen: false,
+    },
   });
 
-  splashWindow.on('closed', () => {
+  splashWindow.on("closed", () => {
     splashWindow = null;
   });
 
-  splashWindow.once('ready-to-show', () => {
+  splashWindow.once("ready-to-show", () => {
     if (!splashWindow) {
       return;
     }
@@ -90,19 +95,19 @@ const createSplashWindow = () => {
     splashWindow.show();
   });
 
-  return splashWindow.loadURL(`file://${path.resolve(__dirname, 'splash.html')}`);
+  return splashWindow.loadURL(`file://${path.resolve(__dirname, "splash.html")}`);
 };
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', async () => {
+app.on("ready", async () => {
   await createSplashWindow();
   await createMainWindow();
 });
 
 // Quit when all windows are closed.
-app.on('window-all-closed', () => {
+app.on("window-all-closed", () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (!isMac()) {
@@ -110,7 +115,7 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('activate', async () => {
+app.on("activate", async () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
