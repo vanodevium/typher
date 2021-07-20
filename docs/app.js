@@ -1,15 +1,4 @@
-const {clipboard} = require('electron');
-
-const Typo = require('typograf');
-const Eyo = require('eyo-kernel');
-
-/**
- * @property {{}} dictionary
- */
-const safeEyo = new Eyo();
-safeEyo.dictionary.loadSafeSync();
-
-const typo = new Typo({locale: ['ru', 'en-US'], live: true});
+const typo = new Typograf({locale: ['ru', 'en-US'], live: true});
 const $editor = document.querySelector('#editor');
 const $result = document.querySelector('#result');
 
@@ -19,7 +8,7 @@ let lastValue = $editor.value;
 
 $editor.addEventListener(
   'input',
-  () => {
+  async () => {
     const value = $editor.value;
     if (value !== lastValue) {
       const pos = getCaretPosition($editor);
@@ -27,8 +16,8 @@ $editor.addEventListener(
       setCaretPosition($editor, pos === value.length ? lastValue.length : pos);
     }
 
-    $result.value = typo.execute(safeEyo.restore(lastValue));
-    clipboard.writeText($result.value);
+    $result.value = typo.execute(lastValue);
+    await navigator.clipboard.writeText(lastValue);
   },
   false
 );
