@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#editor {
+  caret-color: #cc99cc;
+  background-color: #2d2d2d;
+  color: #ccc;
+}
+
+#result {
+  color: #454545;
+}

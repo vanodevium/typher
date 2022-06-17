@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typher: typographic text editor</title>
+  <link href="./app.css" rel="stylesheet">
+</head>
+<body class="font-mono">
+<div class="h-screen grid grid-rows-[auto_1fr]">
+  <div class="p-2 text-center text-3xl">
+    Typher: typographic text editor
+  </div>
+  <div class="grid grid-cols-[1fr_1fr] min-h-0">
+    <div id="editor-container" class="flex">
+      <label for="editor" class="hidden"></label>
+      <textarea id="editor" class="w-full outline-0 pl-2.5 resize-none" placeholder="enter your text"></textarea>
+    </div>
+    <div id="result-container" class="flex">
+      <label for="result" class="hidden"></label>
+      <textarea id="result" class="w-full outline-0 pl-2.5 resize-none" readonly="readonly"></textarea>
+    </div>
+  </div>
+</div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
