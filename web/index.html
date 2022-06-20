@@ -13,11 +13,11 @@
   <div class="grid grid-cols-[1fr_1fr] min-h-0">
     <div id="editor-container" class="flex">
       <label for="editor" class="hidden"></label>
-      <textarea id="editor" class="w-full outline-0 pl-2.5 resize-none" placeholder="enter your text"></textarea>
+      <textarea id="editor" data-scrollsync class="w-full outline-0 pl-2.5 resize-none" placeholder="enter your text"></textarea>
     </div>
     <div id="result-container" class="flex">
       <label for="result" class="hidden"></label>
-      <textarea id="result" class="w-full outline-0 pl-2.5 resize-none" readonly="readonly"></textarea>
+      <textarea id="result" data-scrollsync class="w-full outline-0 pl-2.5 resize-none" readonly="readonly"></textarea>
     </div>
   </div>
   <p class="fixed right-5 bottom-1.5 shadow-sm py-1 px-3 bg-neutral-300/70 rounded-tl-xl rounded-br-xl rounded-bl-xl">
@@ -27,3 +27,4 @@
 <script type="module" src="./app.js"></script>
 </body>
 </html>
+

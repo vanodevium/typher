@@ -6,6 +6,7 @@
     "start": "parcel"
   },
   "dependencies": {
+    "easy-scroll-sync": "^2.0.0",
     "typograf": "^6.14.1"
   },
   "devDependencies": {

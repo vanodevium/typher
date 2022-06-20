@@ -1,8 +1,12 @@
+import {easyScrollSync} from "easy-scroll-sync";
+
 const Typograf = require('typograf');
 
 const typo = new Typograf({locale: ['ru', 'en-US'], live: true});
 const $editor = document.querySelector('#editor');
 const $result = document.querySelector('#result');
+
+easyScrollSync()
 
 $editor.focus();
 
