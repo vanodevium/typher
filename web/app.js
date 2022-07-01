@@ -35,3 +35,8 @@ function getCaretPosition(element) {
 function setCaretPosition(element, pos) {
   return typeof element.setSelectionRange === 'function' && element.setSelectionRange(pos, pos);
 }
+
+window.dataLayer = window.dataLayer || [];
+window.gtag = function gtag(){dataLayer.push(arguments);}
+window.gtag('js', new Date());
+window.gtag('config', 'G-X8YC3F72DB');
