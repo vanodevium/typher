@@ -1,4 +1,5 @@
 import {easyScrollSync} from "easy-scroll-sync";
+import copy from "copy-text-to-clipboard";
 
 const Typograf = require('typograf');
 
@@ -23,7 +24,7 @@ $editor.addEventListener(
     }
 
     $result.value = typo.execute(lastValue);
-    await navigator.clipboard.writeText(lastValue);
+    copy(lastValue)
   },
   false
 );
