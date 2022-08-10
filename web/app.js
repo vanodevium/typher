@@ -24,10 +24,17 @@ $editor.addEventListener(
     }
 
     $result.value = typo.execute(lastValue);
-    copy(lastValue)
+    await navigator.clipboard.writeText(lastValue);
   },
   false
 );
+
+$result.addEventListener(
+  'click',
+  async () => {
+    copy($result.value)
+  }
+)
 
 function getCaretPosition(element) {
   return element.selectionStart || 0;
