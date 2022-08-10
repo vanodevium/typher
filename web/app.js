@@ -1,5 +1,4 @@
 import {easyScrollSync} from "easy-scroll-sync";
-import copy from "copy-text-to-clipboard";
 
 const Typograf = require('typograf');
 
@@ -33,15 +32,6 @@ $editor.addEventListener(
   },
   false
 );
-
-$result.addEventListener(
-  'click',
-  async () => {
-    alert('click on result')
-    copy($result.value)
-  },
-  false
-)
 
 window.dataLayer = window.dataLayer || [];
 window.gtag = function gtag() {
