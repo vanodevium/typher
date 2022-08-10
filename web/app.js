@@ -1,3 +1,5 @@
+import './app.css'
+
 import {easyScrollSync} from "easy-scroll-sync";
 
 const Typograf = require('typograf');
