@@ -29,12 +29,12 @@ $editor.addEventListener(
   false
 );
 
-$result.addEventListener(
-  'click',
-  async () => {
-    copy($result.value)
-  }
-)
+// $result.addEventListener(
+//   'click',
+//   async () => {
+//     copy($result.value)
+//   }
+// )
 
 function getCaretPosition(element) {
   return element.selectionStart || 0;
