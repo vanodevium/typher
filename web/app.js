@@ -17,34 +17,34 @@ $editor.addEventListener(
   'input',
   async () => {
     const value = $editor.value;
-    if (value !== lastValue) {
-      const pos = getCaretPosition($editor);
-      lastValue = typo.execute(value);
-      setCaretPosition($editor, pos === value.length ? lastValue.length : pos);
-    }
 
-    $result.value = typo.execute(lastValue);
-    await navigator.clipboard.writeText(lastValue);
+    if (value !== lastValue) {
+
+      if (!value) {
+        lastValue = '';
+        $result.value = lastValue;
+        return;
+      }
+
+      lastValue = typo.execute(value);
+      $result.value = lastValue;
+      await navigator.clipboard.writeText(lastValue);
+    }
   },
   false
 );
 
-// $result.addEventListener(
-//   'click',
-//   async () => {
-//     copy($result.value)
-//   }
-// )
-
-function getCaretPosition(element) {
-  return element.selectionStart || 0;
-}
-
-function setCaretPosition(element, pos) {
-  return typeof element.setSelectionRange === 'function' && element.setSelectionRange(pos, pos);
-}
+$result.addEventListener(
+  'click',
+  async () => {
+    copy($result.value)
+  },
+  false
+)
 
 window.dataLayer = window.dataLayer || [];
-window.gtag = function gtag(){dataLayer.push(arguments);}
+window.gtag = function gtag() {
+  dataLayer.push(arguments);
+}
 window.gtag('js', new Date());
 window.gtag('config', 'G-X8YC3F72DB');
