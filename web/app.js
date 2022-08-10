@@ -37,6 +37,7 @@ $editor.addEventListener(
 $result.addEventListener(
   'click',
   async () => {
+    alert('click on result')
     copy($result.value)
   },
   false
