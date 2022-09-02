@@ -17,7 +17,6 @@ let lastValue = $editor.value;
 $editor.addEventListener(
   'input',
   async () => {
-    console.log('input')
     const value = $editor.value;
 
     if (value !== lastValue) {
