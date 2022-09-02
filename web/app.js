@@ -39,8 +39,7 @@ $editor.addEventListener(
 $result.addEventListener(
   'click',
   async () => {
-    alert('click')
-    alert(await navigator.clipboard.writeText($result.value))
+    await navigator.clipboard.writeText($result.value)
   }
 )
 
