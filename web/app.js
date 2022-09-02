@@ -17,6 +17,7 @@ let lastValue = $editor.value;
 $editor.addEventListener(
   'input',
   async () => {
+    console.log('input')
     const value = $editor.value;
 
     if (value !== lastValue) {
@@ -34,6 +35,14 @@ $editor.addEventListener(
   },
   false
 );
+
+$result.addEventListener(
+  'click',
+  async () => {
+    alert('click')
+    alert(await navigator.clipboard.writeText($result.value))
+  }
+)
 
 window.dataLayer = window.dataLayer || [];
 window.gtag = function gtag() {
