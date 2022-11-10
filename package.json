@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.61",
-    "electron": "14.0.1",
+    "electron": "18.3.7",
     "electron-installer-debian": "^3.1.0",
     "electron-packager": "^15.4.0",
     "xo": "^0.44.0"
